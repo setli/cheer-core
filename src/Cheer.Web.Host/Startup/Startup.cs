@@ -106,8 +106,6 @@ namespace Cheer.Web.Host.Startup
 
             app.UseAuthentication();
 
-            app.UseJwtTokenMiddleware();
-
             app.UseAbpRequestLocalization();
 
 #if FEATURE_SIGNALR
@@ -136,8 +134,8 @@ namespace Cheer.Web.Host.Startup
             // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
             app.UseSwaggerUI(options =>
             {
-                options.InjectOnCompleteJavaScript("/swagger/ui/abp.js");
-                options.InjectOnCompleteJavaScript("/swagger/ui/on-complete.js");
+               //options..InjectOnCompleteJavaScript("/swagger/ui/abp.js");
+               //options.InjectOnCompleteJavaScript("/swagger/ui/on-complete.js");
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Cheer API V1");
             }); // URL: /swagger
         }

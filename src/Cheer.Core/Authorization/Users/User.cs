@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Authorization.Users;
 using Abp.Extensions;
 
@@ -12,7 +13,7 @@ namespace Cheer.Authorization.Users
         {
             return Guid.NewGuid().ToString("N").Truncate(16);
         }
-
+        
         public static User CreateTenantAdminUser(int tenantId, string emailAddress)
         {
             var user = new User

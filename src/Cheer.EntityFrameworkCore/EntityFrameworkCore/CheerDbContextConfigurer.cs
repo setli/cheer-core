@@ -7,12 +7,14 @@ namespace Cheer.EntityFrameworkCore
     {
         public static void Configure(DbContextOptionsBuilder<CheerDbContext> builder, string connectionString)
         {
-            builder.UseSqlServer(connectionString);
+            //builder.UseSqlServer(connectionString);
+            builder.UseNpgsql(connectionString);
         }
 
         public static void Configure(DbContextOptionsBuilder<CheerDbContext> builder, DbConnection connection)
         {
-            builder.UseSqlServer(connection);
+            //builder.UseSqlServer(connection);
+            builder.UseNpgsql(connection);
         }
     }
 }
