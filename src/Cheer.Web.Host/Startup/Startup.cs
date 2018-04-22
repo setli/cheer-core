@@ -14,7 +14,7 @@ using Abp.Extensions;
 using Cheer.Authentication.JwtBearer;
 using Cheer.Configuration;
 using Cheer.Identity;
-
+using Microsoft.AspNetCore.HttpOverrides;
 #if FEATURE_SIGNALR
 using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Cors;
@@ -44,6 +44,7 @@ namespace Cheer.Web.Host.Startup
             services.AddMvc(
                 options => options.Filters.Add(new CorsAuthorizationFilterFactory(_defaultCorsPolicyName))
             );
+            
 
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
@@ -129,6 +130,12 @@ namespace Cheer.Web.Host.Startup
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
+            app.UseAuthentication();
             // Enable middleware to serve generated Swagger as a JSON endpoint
             app.UseSwagger();
             // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
