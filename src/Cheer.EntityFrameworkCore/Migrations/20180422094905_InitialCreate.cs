@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Cheer.Migrations
 {
-    public partial class init_migration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

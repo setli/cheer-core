@@ -16,8 +16,8 @@ using System;
 namespace Cheer.Migrations
 {
     [DbContext(typeof(CheerDbContext))]
-    [Migration("20180418140632_init_migration")]
-    partial class init_migration
+    [Migration("20180422094905_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
